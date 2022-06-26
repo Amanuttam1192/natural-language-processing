@@ -14,7 +14,7 @@ RESOURCE_PATH = {
     'THREAD_EMBEDDINGS_FOLDER': 'thread_embeddings_by_tags',
     'WORD_EMBEDDINGS': 'word_embeddings.tsv',
 }
-
+corpus index 123
 
 def text_prepare(text):
     """Performs tokenization and simple preprocessing."""
