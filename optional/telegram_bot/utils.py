@@ -60,13 +60,53 @@ def load_embeddings(embeddings_path):
 def question_to_vec(question, embeddings, dim):
     """Transforms a string to an embedding by averaging word embeddings."""
 
-    # Hint: you have already implemented exactly this function in the 3rd assignment.
+   # library to clean data
+import re
 
-    ########################
-    #### YOUR CODE HERE ####
-    ########################
+# Natural Language Tool Kit
+import nltk
 
-    # remove this when you're done
+nltk.download('stopwords')
+
+# to remove stopword
+from nltk.corpus import stopwords
+
+# for Stemming propose
+from nltk.stem.porter import PorterStemmer
+
+# Initialize empty array
+# to append clean text
+corpus = []
+
+# 1000 (reviews) rows to clean
+for i in range(0, 1000):
+	
+	# column : "Review", row ith
+	review = re.sub('[^a-zA-Z]', ' ', dataset['Review'][i])
+	
+	# convert all cases to lower cases
+	review = review.lower()
+	
+	# split to array(default delimiter is " ")
+	review = review.split()
+	
+	# creating PorterStemmer object to
+	# take main stem of each word
+	ps = PorterStemmer()
+	
+	# loop for stemming each word
+	# in string array at ith row
+	review = [ps.stem(word) for word in review
+				if not word in set(stopwords.words('english'))]
+				
+	# rejoin all string array elements
+	# to create back into a string
+	review = ' '.join(review)
+	
+	# append each string to create
+	# array of clean text
+	corpus.append(review)
+
     raise NotImplementedError(
         "Open utils.py and fill with your code. In case of Google Colab, download"
         "(https://github.com/hse-aml/natural-language-processing/blob/master/project/utils.py), "
