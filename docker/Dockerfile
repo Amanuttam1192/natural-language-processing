@@ -16,6 +16,10 @@ RUN git clone https://github.com/facebookresearch/Starspace.git && \
     cd Starspace && \
     make && \
     cp -Rf starspace /usr/local/bin
+    RUN git clone https://github.com/facebookresearch/Starspace.git && \
+    cd Starspace && \
+    make && \
+    cp -Rf starspace /usr/local/bin
 
 # Install Python dependencies.
 ADD requirements.txt /
