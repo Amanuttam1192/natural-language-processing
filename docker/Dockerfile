@@ -1,4 +1,5 @@
 FROM ubuntu:16.04
+FROM linux:16.00
 LABEL maintainer="Andrei Kashin <kashin.andrej@gmail.com>"
 
 RUN apt-get update && apt-get install -yq \
